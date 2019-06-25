@@ -52,14 +52,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   run() async {
     myRows = await db.getAllRows('bien_bao');
-
     return myRows;
   }
+  
 
   @override
   Widget build(BuildContext context) {
     run();
-    print(myRows);
+    
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -78,11 +78,13 @@ class _MyHomePageState extends State<MyHomePage> {
           return Card(
             child: ListTile(
               leading: Icon(Icons.ac_unit),
-             title: Text("${NoticeBoard.fromMap(myRows[position]).ten_loi}"),
+              title: Text("${NoticeBoard.fromMap(myRows[position]).ten_loi}"),
+              subtitle: Text("${NoticeBoard.fromMap(myRows[position]).anh}"),
             ),
           );
         },
       ),
     );
   }
+  
 }
